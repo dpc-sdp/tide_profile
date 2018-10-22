@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Tide Grant module functionality.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function tide_grant_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form["#validate"][] = '_tide_grant_validate_grant_dates';
+}
+
+/**
+ * Custom validation function for Grant dates.
+ *
+ * @param array $form
+ *   Form elements.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   Form state.
+ */
+function _tide_grant_validate_grant_dates(array &$form, FormStateInterface $form_state) {
+  $on_going = $form_state->getValue('field_node_on_going');
+  $dates = $form_state->getValue('field_node_dates');
+  $start_date = !empty($dates) ? $dates[0]["value"] : '';
+  $end_date = !empty($dates) ? $dates[0]["end_value"] : '';
+  $messenger = \Drupal::messenger();
+  if ((empty($start_date) || empty($end_date)) && $on_going['value'] === 0) {
+    $form_state->setError($form["field_node_dates"]["widget"][0]["value"], t('Start date is required'));
+    $form_state->setError($form["field_node_dates"]["widget"][0]["end_value"], t('End date is required'));
+    $messenger->addError(t('Add Grant dates or select on-going.'));
+  }
+}

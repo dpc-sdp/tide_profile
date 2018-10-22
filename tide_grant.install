@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Tide Grant module install file..
+ */
+
+use Drupal\workflows\Entity\Workflow;
+
+/**
+ * Implements hook_install().
+ */
+function tide_grant_install() {
+  // Enable Editorial workflow if workflow module is enabled.
+  $moduleHandler = \Drupal::service('module_handler');
+  if (!\Drupal::service('config.installer')->isSyncing() && $moduleHandler->moduleExists('workflows')) {
+    $editorial_workflow = Workflow::load('editorial');
+    if ($editorial_workflow) {
+      $editorial_workflow->getTypePlugin()
+        ->addEntityTypeAndBundle('node', 'grant');
+      $editorial_workflow->save();
+    }
+  }
+}

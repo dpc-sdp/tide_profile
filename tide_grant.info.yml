@@ -1,0 +1,10 @@
+name: Tide Grant
+type: module
+description: 'Provides Grant content type and related configuration. '
+type: module
+package: Tide
+core: 8.x
+dependencies:
+  - drupal:datetime_range
+  - dpc-sdp:tide_core
+  - dpc-sdp:tide_media

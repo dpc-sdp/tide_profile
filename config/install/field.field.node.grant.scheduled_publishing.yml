@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.scheduled_publishing
+    - node.type.grant
+    - scheduled_updates.scheduled_update_type.scheduled_publishing
+id: node.grant.scheduled_publishing
+field_name: scheduled_publishing
+entity_type: node
+bundle: grant
+label: 'Scheduled Publishing'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:scheduled_update'
+  handler_settings:
+    target_bundles:
+      scheduled_publishing: scheduled_publishing
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
