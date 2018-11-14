@@ -8,3 +8,47 @@ dependencies:
   - drupal:datetime_range
   - dpc-sdp:tide_core
   - dpc-sdp:tide_media
+config_devel:
+  install:
+    - node.type.grant
+    - core.base_field_override.node.grant.promote
+    - core.base_field_override.node.grant.status
+    - core.entity_form_display.node.grant.default
+    - core.entity_form_display.paragraph.grants_overview.default
+    - core.entity_view_display.node.grant.default
+    - core.entity_view_display.node.grant.teaser
+    - core.entity_view_display.paragraph.grants_overview.default
+    - field.field.node.grant.field_audience
+    - field.field.node.grant.field_featured_image
+    - field.field.node.grant.field_landing_page_contact
+    - field.field.node.grant.field_landing_page_intro_text
+    - field.field.node.grant.field_landing_page_show_contact
+    - field.field.node.grant.field_landing_page_summary
+    - field.field.node.grant.field_node_dates
+    - field.field.node.grant.field_node_department
+    - field.field.node.grant.field_node_documents
+    - field.field.node.grant.field_node_fundinglevel
+    - field.field.node.grant.field_node_guidelines
+    - field.field.node.grant.field_node_on_going
+    - field.field.node.grant.field_node_overview
+    - field.field.node.grant.field_node_primary_site
+    - field.field.node.grant.field_node_site
+    - field.field.node.grant.field_node_timeline
+    - field.field.node.grant.field_show_social_sharing
+    - field.field.node.grant.field_tags
+    - field.field.node.grant.field_topic
+    - field.field.node.grant.scheduled_archiving
+    - field.field.node.grant.scheduled_publishing
+    - field.field.paragraph.grants_overview.field_paragraph_cta
+    - field.field.paragraph.grants_overview.field_paragraph_summary
+    - field.field.paragraph.grants_overview.field_paragraph_title
+    - field.storage.node.field_node_dates
+    - field.storage.node.field_node_department
+    - field.storage.node.field_node_fundinglevel
+    - field.storage.node.field_node_guidelines
+    - field.storage.node.field_node_on_going
+    - field.storage.node.field_node_overview
+    - paragraphs.paragraphs_type.grants_overview
+    - paragraphs.paragraphs_type.timelines
+  optional:
+    - jsonapi_extras.jsonapi_resource_config.node--grant

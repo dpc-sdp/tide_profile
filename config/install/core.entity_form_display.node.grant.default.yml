@@ -331,8 +331,8 @@ content:
     type: entity_reference_paragraphs
     weight: 16
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
+      title: Guideline
+      title_plural: Guidelines
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
@@ -347,12 +347,14 @@ content:
     type: boolean_checkbox
     region: content
   field_node_overview:
-    type: entity_reference_paragraphs
+    type: paragraphs
     weight: 18
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
+      title: Overview
+      title_plural: Overview
       edit_mode: closed
+      closed_mode: preview
+      autocollapse: all
       add_mode: button
       form_display_mode: default
       default_paragraph_type: _none
@@ -376,8 +378,8 @@ content:
     type: paragraphs
     weight: 19
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
+      title: Timeline
+      title_plural: Timelines
       edit_mode: closed
       closed_mode: summary
       autocollapse: none
