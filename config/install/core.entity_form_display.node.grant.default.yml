@@ -328,15 +328,17 @@ content:
     type: number
     region: content
   field_node_guidelines:
-    type: entity_reference_paragraphs
+    type: paragraphs
     weight: 16
     settings:
       title: Guideline
       title_plural: Guidelines
       edit_mode: open
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: _none
+      closed_mode: preview
+      autocollapse: all
+      add_mode: button
+      form_display_mode: grants
+      default_paragraph_type: accordion
     third_party_settings: {  }
     region: content
   field_node_on_going:

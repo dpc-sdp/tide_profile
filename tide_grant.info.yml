@@ -18,6 +18,12 @@ config_devel:
     - core.entity_view_display.node.grant.default
     - core.entity_view_display.node.grant.teaser
     - core.entity_view_display.paragraph.grants_overview.default
+    - core.entity_form_display.paragraph.accordion.grants
+    - core.entity_form_display.paragraph.accordion_content.default
+    - core.entity_form_display.paragraph.accordion_content.grants
+    - core.entity_form_mode.paragraph.grants
+    - core.entity_view_display.node.grant.default
+    - core.entity_view_display.node.grant.teaser
     - field.field.node.grant.field_audience
     - field.field.node.grant.field_featured_image
     - field.field.node.grant.field_landing_page_contact
@@ -50,5 +56,6 @@ config_devel:
     - field.storage.node.field_node_overview
     - paragraphs.paragraphs_type.grants_overview
     - paragraphs.paragraphs_type.timelines
+    - tide_grant.settings
   optional:
     - jsonapi_extras.jsonapi_resource_config.node--grant

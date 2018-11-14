@@ -22,3 +22,12 @@ function tide_grant_install() {
     }
   }
 }
+
+/**
+ * Add Grant Guidelines to active config.
+ */
+function tide_grant_update_8001() {
+  module_load_include('inc', 'tide_core', 'includes/helpers');
+  $config_location = [drupal_get_path('module', 'tide_grant') . '/config/install'];
+  _tide_import_single_config('tide_grant.settings', $config_location);
+}

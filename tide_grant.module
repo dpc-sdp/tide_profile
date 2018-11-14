@@ -12,6 +12,19 @@ use Drupal\Core\Form\FormStateInterface;
  */
 function tide_grant_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   $form["#validate"][] = '_tide_grant_validate_grant_dates';
+  // Manipulate Guidelines fields on node add.
+  if ($form_id == 'node_grant_form') {
+    $form['field_node_guidelines']['widget'][0]['subform']['field_paragraph_title']['widget'][0]['value']['#default_value'] = t('Guidelines');
+    $form['field_node_guidelines']['widget'][0]['subform']['field_paragraph_title']['widget'][0]['value']['#required'] = TRUE;
+    // Lookup our preset values from config.
+    if ($config = \Drupal::config('tide_grant.settings')->get('guidelines')) {
+      foreach ($config as $key => $value) {
+        if ($element = &$form['field_node_guidelines']['widget'][0]['subform']['field_paragraph_accordion']['widget'][$key]) {
+          $element['subform']['field_paragraph_accordion_name']['widget'][0]['value']['#default_value'] = $value;
+        }
+      }
+    }
+  }
 }
 
 /**

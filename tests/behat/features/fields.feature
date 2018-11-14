@@ -71,6 +71,14 @@ Feature: Fields for Grant content type
     Then I should see text matching "No Timeline added yet."
     And I should see the button "Add Timeline" in the "content" region
 
+    # Grant Guidelines paragraph
+    When I click "Guidelines"
+    Then I should see 4 "#edit-field-node-guidelines-0-subform-field-paragraph-accordion-wrapper .field-multiple-table tr.draggable" elements
+    And I should see the button "Add Accordion Content" in the "content" region
+    When I press "Add Accordion Content"
+    And I wait for AJAX to finish
+    Then I should see 5 "#edit-field-node-guidelines-0-subform-field-paragraph-accordion-wrapper .field-multiple-table tr.draggable" elements
+
     # Grant date field.
     And I should see an "input#edit-field-node-on-going-value" element
     And I should see an "input#edit-field-node-dates-0-value-date" element
