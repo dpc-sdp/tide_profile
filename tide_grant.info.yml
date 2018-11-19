@@ -31,7 +31,6 @@ config_devel:
     - field.field.node.grant.field_landing_page_show_contact
     - field.field.node.grant.field_landing_page_summary
     - field.field.node.grant.field_node_dates
-    - field.field.node.grant.field_node_department
     - field.field.node.grant.field_node_documents
     - field.field.node.grant.field_node_fundinglevel
     - field.field.node.grant.field_node_guidelines
@@ -49,7 +48,6 @@ config_devel:
     - field.field.paragraph.grants_overview.field_paragraph_summary
     - field.field.paragraph.grants_overview.field_paragraph_title
     - field.storage.node.field_node_dates
-    - field.storage.node.field_node_department
     - field.storage.node.field_node_fundinglevel
     - field.storage.node.field_node_guidelines
     - field.storage.node.field_node_on_going
