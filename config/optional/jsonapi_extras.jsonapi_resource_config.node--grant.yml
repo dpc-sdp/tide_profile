@@ -132,7 +132,7 @@ resourceFields:
     fieldName: path
     publicName: path
     enhancer:
-      id: ''
+      id: path_enhancer
     disabled: false
   menu_link:
     fieldName: menu_link
