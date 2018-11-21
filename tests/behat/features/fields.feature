@@ -68,7 +68,15 @@ Feature: Fields for Grant content type
 
     # Grant Timeline paragraph
     When I click "Timeline"
-    Then I should see text matching "No Timeline added yet."
+    Then I should see an "#edit-field-node-timeline-0-top-type" element
+    And I see field "field_node_timeline[0][subform][field_timeline][0][subform][field_paragraph_title][0][value]"
+    And I see field "field_node_timeline[0][subform][field_timeline][0][subform][field_paragraph_date_range][0][value][date]"
+    And I see field "field_node_timeline[0][subform][field_timeline][0][subform][field_paragraph_date_range][0][end_value][date]"
+    And I see field "field_node_timeline[0][subform][field_timeline][0][subform][field_paragraph_cta_text][0][value]"
+    And I see field "field_node_timeline[0][subform][field_timeline][0][subform][field_paragraph_link][0][uri]"
+    And I see field "field_node_timeline[0][subform][field_timeline][0][subform][field_paragraph_link][0][title]"
+    And I see the button "Select images"
+    And I see field "field_node_timeline[0][subform][field_timeline][0][subform][field_paragraph_body][0][value]"
     And I should see the button "Add Timeline" in the "content" region
 
     # Grant Guidelines paragraph
