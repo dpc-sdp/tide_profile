@@ -76,7 +76,7 @@ Feature: Fields for Grant content type
     And I see field "field_node_timeline[0][subform][field_timeline][0][subform][field_paragraph_link][0][uri]"
     And I see field "field_node_timeline[0][subform][field_timeline][0][subform][field_paragraph_link][0][title]"
     And I see the button "Select images"
-    And I see field "field_node_timeline[0][subform][field_timeline][0][subform][field_paragraph_body][0][value]"
+    And I see field "field_node_timeline[0][subform][field_timeline][0][subform][field_paragraph_summary][0][value]"
     And I should see the button "Add Timeline" in the "content" region
 
     # Grant Guidelines paragraph

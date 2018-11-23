@@ -383,11 +383,11 @@ content:
       title: Timeline
       title_plural: Timelines
       edit_mode: closed
-      closed_mode: summary
-      autocollapse: none
+      closed_mode: preview
+      autocollapse: all
       add_mode: button
-      form_display_mode: default
-      default_paragraph_type: _none
+      form_display_mode: grants
+      default_paragraph_type: timelines
     third_party_settings: {  }
     region: content
   field_show_social_sharing:

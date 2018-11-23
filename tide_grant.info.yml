@@ -21,6 +21,8 @@ config_devel:
     - core.entity_form_display.paragraph.accordion.grants
     - core.entity_form_display.paragraph.accordion_content.default
     - core.entity_form_display.paragraph.accordion_content.grants
+    - core.entity_form_display.paragraph.timeline.grants.yml
+    - core.entity_form_display.paragraph.timelines.grants.yml
     - core.entity_form_mode.paragraph.grants
     - core.entity_view_display.node.grant.default
     - core.entity_view_display.node.grant.teaser
