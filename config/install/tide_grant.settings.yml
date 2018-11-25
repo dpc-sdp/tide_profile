@@ -1,5 +1,5 @@
 guidelines:
-  0: 'Eligibility'
-  1: 'Assessment criteria'
-  2: 'Assessment process'
-  3: 'How to apply'
+  - 'Eligibility'
+  - 'Assessment criteria'
+  - 'Assessment process'
+  - 'How to apply'
