@@ -4,6 +4,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.grant.field_audience
+    - field.field.node.grant.field_call_to_action
     - field.field.node.grant.field_featured_image
     - field.field.node.grant.field_landing_page_contact
     - field.field.node.grant.field_landing_page_intro_text
@@ -14,13 +15,16 @@ dependencies:
     - field.field.node.grant.field_node_documents
     - field.field.node.grant.field_node_fundinglevel
     - field.field.node.grant.field_node_guidelines
-    - field.field.node.grant.field_node_overview
+    - field.field.node.grant.field_node_on_going
     - field.field.node.grant.field_node_primary_site
     - field.field.node.grant.field_node_site
     - field.field.node.grant.field_node_timeline
+    - field.field.node.grant.field_overview_title
     - field.field.node.grant.field_show_social_sharing
     - field.field.node.grant.field_tags
     - field.field.node.grant.field_topic
+    - field.field.node.grant.scheduled_archiving
+    - field.field.node.grant.scheduled_publishing
     - node.type.grant
   module:
     - user
@@ -29,11 +33,15 @@ targetEntityType: node
 bundle: grant
 mode: teaser
 content:
+  content_moderation_control:
+    weight: -20
+    region: content
   links:
     weight: 100
     region: content
 hidden:
   field_audience: true
+  field_call_to_action: true
   field_featured_image: true
   field_landing_page_contact: true
   field_landing_page_intro_text: true
@@ -45,10 +53,10 @@ hidden:
   field_node_fundinglevel: true
   field_node_guidelines: true
   field_node_on_going: true
-  field_node_overview: true
   field_node_primary_site: true
   field_node_site: true
   field_node_timeline: true
+  field_overview_title: true
   field_show_social_sharing: true
   field_tags: true
   field_topic: true

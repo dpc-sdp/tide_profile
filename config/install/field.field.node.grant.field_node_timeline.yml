@@ -123,4 +123,7 @@ settings:
       social_link:
         weight: 66
         enabled: false
+      timeline:
+        weight: 67
+        enabled: false
 field_type: entity_reference_revisions

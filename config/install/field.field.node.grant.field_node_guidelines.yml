@@ -13,7 +13,7 @@ entity_type: node
 bundle: grant
 label: Guidelines
 description: "The default accordion sections that should be added are:\r\n<br>Eligibility \r\n<br>Assessment criteria\r\n<br>Assessment process\r\n<br>How to apply"
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -122,5 +122,8 @@ settings:
         enabled: false
       social_link:
         weight: 66
+        enabled: false
+      timeline:
+        weight: 67
         enabled: false
 field_type: entity_reference_revisions

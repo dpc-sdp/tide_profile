@@ -57,14 +57,10 @@ Feature: Fields for Grant content type
 
     # Grant Overview paragraph
     When I click "Grant Details"
-    Then I should see text matching "No Overview added yet."
-    And I should see the button "Add Grants Overview" in the "content" region
-    When I press "Add Grants Overview"
-    And I wait for AJAX to finish
-    Then I see field "field_node_overview[0][subform][field_paragraph_title][0][value]"
-    And I see field "field_node_overview[0][subform][field_paragraph_summary][0][value]"
-    And I see field "field_node_overview[0][subform][field_paragraph_cta][0][uri]"
-    And I see field "field_node_overview[0][subform][field_paragraph_cta][0][title]"
+    Then I see field "Title"
+    And I should see an "input#edit-field-overview-title-0-value.required" element
+    And I should see an "input#edit-field-description-0-value" element
+    And I should see an "input#edit-field-call-to-action-0-uri" element
 
     # Grant Timeline paragraph
     When I click "Timeline"
