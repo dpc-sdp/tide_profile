@@ -78,13 +78,17 @@ resourceFields:
     fieldName: created
     publicName: created
     enhancer:
-      id: ''
+      id: date_time
+      settings:
+        dateTimeFormat: 'Y-m-d\TH:i:sP'
     disabled: false
   changed:
     fieldName: changed
     publicName: changed
     enhancer:
-      id: ''
+      id: date_time
+      settings:
+        dateTimeFormat: 'Y-m-d\TH:i:sP'
     disabled: false
   promote:
     fieldName: promote
@@ -146,6 +150,18 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  field_call_to_action:
+    fieldName: field_call_to_action
+    publicName: field_call_to_action
+    enhancer:
+      id: link_enhancer
+    disabled: false
+  field_description:
+    fieldName: field_description
+    publicName: field_description
+    enhancer:
+      id: ''
+    disabled: false
   field_featured_image:
     fieldName: field_featured_image
     publicName: field_featured_image
@@ -164,6 +180,12 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  field_landing_page_nav_title:
+    fieldName: field_landing_page_nav_title
+    publicName: field_landing_page_nav_title
+    enhancer:
+      id: ''
+    disabled: false
   field_landing_page_show_contact:
     fieldName: field_landing_page_show_contact
     publicName: field_landing_page_show_contact
@@ -176,11 +198,19 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  field_news_intro_text:
+    fieldName: field_news_intro_text
+    publicName: field_news_intro_text
+    enhancer:
+      id: ''
+    disabled: false
   field_node_dates:
     fieldName: field_node_dates
     publicName: field_node_dates
     enhancer:
-      id: ''
+      id: date_time_from_string
+      settings:
+        dateTimeFormat: 'Y-m-d\TH:i:sP'
     disabled: false
   field_node_department:
     fieldName: field_node_department
@@ -212,12 +242,6 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
-  field_node_overview:
-    fieldName: field_node_overview
-    publicName: field_node_overview
-    enhancer:
-      id: ''
-    disabled: false
   field_node_primary_site:
     fieldName: field_node_primary_site
     publicName: field_node_primary_site
@@ -233,6 +257,12 @@ resourceFields:
   field_node_timeline:
     fieldName: field_node_timeline
     publicName: field_node_timeline
+    enhancer:
+      id: ''
+    disabled: false
+  field_overview_title:
+    fieldName: field_overview_title
+    publicName: field_overview_title
     enhancer:
       id: ''
     disabled: false
