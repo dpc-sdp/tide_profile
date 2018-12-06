@@ -6,14 +6,22 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * Implements hook_form_BASE_FORM_ID_alter().
  */
 function tide_grant_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   $form["#validate"][] = '_tide_grant_validate_grant_dates';
-  // Manipulate Guidelines fields on node add.
-  if ($form_id == 'node_grant_form') {
+  // Manipulate Guidelines fields on node add and edit.
+
+  if (in_array($form_id , ['node_grant_form', 'node_grant_edit_form'])) {
+
+    $form['#attached']['library'][] = 'tide_grant/drupal.paragraphs.actions';
+
+    $form['field_node_dates']['widget'][0]['value']['#title'] = new TranslatableMarkup('Start date and time');
+    $form['field_node_dates']['widget'][0]['end_value']['#title'] = new TranslatableMarkup('End date and time');
+
     $form['field_node_guidelines']['widget'][0]['subform']['field_paragraph_title']['widget'][0]['value']['#default_value'] = t('Guidelines');
     $form['field_node_guidelines']['widget'][0]['subform']['field_paragraph_title']['widget'][0]['value']['#required'] = TRUE;
     // Lookup our preset values from config.
@@ -44,6 +52,6 @@ function _tide_grant_validate_grant_dates(array &$form, FormStateInterface $form
   if ((empty($start_date) || empty($end_date)) && $on_going['value'] === 0) {
     $form_state->setError($form["field_node_dates"]["widget"][0]["value"], t('Start date is required'));
     $form_state->setError($form["field_node_dates"]["widget"][0]["end_value"], t('End date is required'));
-    $messenger->addError(t('Add Grant dates or select on-going.'));
+    $messenger->addError(t('Add Grant dates or select Ongoing.'));
   }
 }

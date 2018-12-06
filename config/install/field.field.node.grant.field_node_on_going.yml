@@ -8,8 +8,8 @@ id: node.grant.field_node_on_going
 field_name: field_node_on_going
 entity_type: node
 bundle: grant
-label: On-going
-description: 'Check the Ongoing box OR fill in Grant Dates'
+label: Ongoing
+description: 'Check this field if the grant is ongoing and does not have start and end dates.'
 required: false
 translatable: false
 default_value:

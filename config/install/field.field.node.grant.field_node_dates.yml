@@ -11,7 +11,7 @@ field_name: field_node_dates
 entity_type: node
 bundle: grant
 label: 'Grant Dates'
-description: 'Check this field if the grant is on-going and does not have start and end dates.'
+description: 'Check this field if the grant is ongoing and does not have start and end dates.'
 required: false
 translatable: false
 default_value: {  }

@@ -1,0 +1,10 @@
+drupal.paragraphs.actions:
+  js:
+    js/paragraphs.actions.js: {}
+  dependencies:
+    - core/drupalSettings
+    - core/jquery.once
+    - core/jquery
+    - core/jquery.form
+    - core/drupal.ajax
+    - core/drupal
