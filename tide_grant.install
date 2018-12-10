@@ -41,3 +41,12 @@ function tide_grant_update_8002() {
     $grants_overview_type->delete();
   }
 }
+
+/**
+ * Add Grant Guidelines to active config.
+ */
+function tide_grant_update_8003() {
+  module_load_include('inc', 'tide_core', 'includes/helpers');
+  $config_location = [drupal_get_path('module', 'tide_grant') . '/config/install'];
+  _tide_import_single_config('webform.webform.tide_grant_submission', $config_location);
+}

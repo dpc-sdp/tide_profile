@@ -11,12 +11,16 @@ dependencies:
     - field.field.node.grant.field_landing_page_intro_text
     - field.field.node.grant.field_landing_page_show_contact
     - field.field.node.grant.field_landing_page_summary
+    - field.field.node.grant.field_node_author
     - field.field.node.grant.field_node_dates
     - field.field.node.grant.field_node_department
     - field.field.node.grant.field_node_documents
+    - field.field.node.grant.field_node_email
     - field.field.node.grant.field_node_fundinglevel
     - field.field.node.grant.field_node_guidelines
+    - field.field.node.grant.field_node_link
     - field.field.node.grant.field_node_on_going
+    - field.field.node.grant.field_node_phone
     - field.field.node.grant.field_node_primary_site
     - field.field.node.grant.field_node_site
     - field.field.node.grant.field_node_timeline
@@ -38,12 +42,14 @@ dependencies:
     - maxlength
     - paragraphs
     - path
+    - telephone
 third_party_settings:
   field_group:
     group_section_1:
       children:
         - group_page_header
         - group_body_content
+        - group_grant_author
       parent_name: ''
       weight: 0
       format_type: tabs
@@ -73,7 +79,9 @@ third_party_settings:
     group_body_content:
       children:
         - group_grant_details
-        - field_node_department
+        - field_node_link
+        - field_node_fundinglevel
+        - field_audience
       parent_name: group_section_1
       weight: 21
       format_type: tab
@@ -209,6 +217,38 @@ third_party_settings:
         required_fields: true
       label: Contact
       region: content
+    group_dates:
+      children:
+        - field_node_on_going
+        - field_node_dates
+      parent_name: group_grant_details
+      weight: 26
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Dates
+      region: content
+    group_grant_author:
+      children:
+        - field_node_author
+        - field_node_email
+        - field_node_phone
+        - field_node_department
+      parent_name: group_section_1
+      weight: 22
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Grant Author'
+      region: content
 id: node.grant.default
 targetEntityType: node
 bundle: grant
@@ -221,7 +261,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_audience:
-    weight: 16
+    weight: 19
     settings:
       match_operator: CONTAINS
       size: 60
@@ -300,6 +340,14 @@ content:
         maxlength_js_truncate_html: false
     type: string_textarea
     region: content
+  field_node_author:
+    weight: 29
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_node_dates:
     weight: 18
     settings: {  }
@@ -307,7 +355,7 @@ content:
     type: daterange_default
     region: content
   field_node_department:
-    weight: 17
+    weight: 32
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -326,6 +374,14 @@ content:
       field_widget_replace: false
     third_party_settings: {  }
     type: entity_browser_entity_reference
+    region: content
+  field_node_email:
+    weight: 30
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
     region: content
   field_node_fundinglevel:
     weight: 15
@@ -352,12 +408,27 @@ content:
         collapse_edit_all: collapse_edit_all
     third_party_settings: {  }
     region: content
+  field_node_link:
+    weight: 17
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
   field_node_on_going:
     weight: 17
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
+  field_node_phone:
+    weight: 31
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
     region: content
   field_node_primary_site:
     type: options_buttons

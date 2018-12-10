@@ -7,16 +7,15 @@
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\node\Entity\Node;
 
 /**
  * Implements hook_form_BASE_FORM_ID_alter().
  */
 function tide_grant_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  $form["#validate"][] = '_tide_grant_validate_grant_dates';
-
-  // Manipulate Guidelines fields on node add and edit.
   if (in_array($form_id, ['node_grant_form', 'node_grant_edit_form'])) {
-
+    $form["#validate"][] = '_tide_grant_validate_grant_dates';
+    // Manipulate Guidelines fields on node add and edit.
     $form['#attached']['library'][] = 'tide_grant/drupal.paragraphs.actions';
 
     $form['field_node_dates']['widget'][0]['value']['#title'] = new TranslatableMarkup('Start date and time');
@@ -54,4 +53,84 @@ function _tide_grant_validate_grant_dates(array &$form, FormStateInterface $form
     $form_state->setError($form["field_node_dates"]["widget"][0]["end_value"], t('End date is required'));
     $messenger->addError(t('Add Grant dates or select Ongoing.'));
   }
+}
+
+/**
+ * Implements hook_config_ignore_settings_alter().
+ */
+function tide_grant_config_ignore_settings_alter(array &$settings) {
+  // Ignore the Content Rating webform so that it won't be reverted
+  // during config sync.
+  $settings[] = 'webform.webform.tide_grant_submission';
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function tide_grant_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Check the form ID.
+  if (!empty($form['#webform_id']) && $form['#webform_id'] == 'tide_grant_submission') {
+    foreach (array_keys($form['actions']) as $action) {
+      if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+        $form['actions'][$action]['#submit'][] = '_tide_grant_submit';
+      }
+    }
+  }
+}
+
+/**
+ * Custom submit function for Grants webform.
+ *
+ * @param array $form
+ *   Form elements.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   Form state.
+ */
+function _tide_grant_submit(array &$form, FormStateInterface $form_state) {
+  // Create node object with values from webform submission.
+  $node = Node::create([
+    'type' => 'grant',
+    'title' => $form_state->getValue('name_of_grant_or_program'),
+    'field_description' => [
+      'value' => $form_state->getValue('describe_the_grant_or_program'),
+    ],
+    'field_landing_page_summary' => [
+      'value' => $form_state->getValue('describe_the_grant_or_program'),
+    ],
+    'field_node_dates' => [
+      [
+        'value' => date('Y-m-d\TH:i:00', strtotime($form_state->getValue('open_date'))),
+        'end_value' => date('Y-m-d\TH:i:00', strtotime($form_state->getValue('close_date'))),
+      ],
+    ],
+    'field_node_on_going' => $form_state->getValue('this_grant_program_is_ongoing_and_does_have_an_open_close_dates_'),
+    'field_topic' => [
+      ['target_id' => $form_state->getValue('topic')],
+    ],
+    'field_audience' => [],
+    'field_node_fundinglevel' => [
+      'value' => $form_state->getValue('funding_amount'),
+    ],
+    'field_node_link' => [
+      'uri' => $form_state->getValue('website_url_to_apply_for_grant_or_program'),
+    ],
+    'field_call_to_action' => [
+      'uri' => $form_state->getValue('website_url_for_grant_or_program_information'),
+      'title' => t('More information'),
+    ],
+    'field_node_author' => [
+      'value' => $form_state->getValue('contact_person'),
+    ],
+    'field_node_department' => [
+      ['target_id' => $form_state->getValue('department_agency_or_provider_organisation')],
+    ],
+    'field_node_email' => $form_state->getValue('contact_email_address'),
+    'field_node_phone' => $form_state->getValue('contact_telephone_number'),
+  ]);
+
+  // Loop through multiple value fields.
+  foreach ($form_state->getValue('who_is_the_grant_or_program_for_') as $topic) {
+    $node->field_audience->appendItem($topic);
+  }
+  $node->save();
 }

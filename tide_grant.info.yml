@@ -31,11 +31,15 @@ config_devel:
     - field.field.node.grant.field_landing_page_intro_text
     - field.field.node.grant.field_landing_page_show_contact
     - field.field.node.grant.field_landing_page_summary
+    - field.field.node.grant.field_node_author
     - field.field.node.grant.field_node_dates
     - field.field.node.grant.field_node_documents
+    - field.field.node.grant.field_node_email
     - field.field.node.grant.field_node_fundinglevel
     - field.field.node.grant.field_node_guidelines
+    - field.field.node.grant.field_node_link
     - field.field.node.grant.field_node_on_going
+    - field.field.node.grant.field_node_phone
     - field.field.node.grant.field_node_primary_site
     - field.field.node.grant.field_node_site
     - field.field.node.grant.field_node_timeline
@@ -46,12 +50,17 @@ config_devel:
     - field.field.node.grant.scheduled_archiving
     - field.field.node.grant.scheduled_publishing
     - field.storage.node.field_description
+    - field.storage.node.field_node_author
     - field.storage.node.field_node_dates
+    - field.storage.node.field_node_email
     - field.storage.node.field_node_fundinglevel
     - field.storage.node.field_node_guidelines
+    - field.storage.node.field_node_link
     - field.storage.node.field_node_on_going
+    - field.storage.node.field_node_phone
     - field.storage.node.field_overview_title
     - paragraphs.paragraphs_type.timelines
     - tide_grant.settings
+    - webform.webform.tide_grant_submission
   optional:
     - jsonapi_extras.jsonapi_resource_config.node--grant
