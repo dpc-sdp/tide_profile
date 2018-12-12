@@ -6,6 +6,8 @@
  */
 
 use Drupal\workflows\Entity\Workflow;
+use Drupal\user\Entity\User;
+use Drupal\Component\Utility\Random;
 
 /**
  * Implements hook_install().
@@ -21,6 +23,22 @@ function tide_grant_install() {
       $editorial_workflow->save();
     }
   }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function tide_grant_uninstall() {
+  // Remove the user we created.
+  if ($user = user_load_by_name('Grant Author')) {
+    user_delete($user->id());
+
+  }
+
+  // Now cleanup the config.
+  $config_factory = \Drupal::configFactory();
+  // Remove the image styles that Linkit has installed.
+  $config_factory->getEditable('user.role.grant_author')->delete();
 }
 
 /**
@@ -49,4 +67,39 @@ function tide_grant_update_8003() {
   module_load_include('inc', 'tide_core', 'includes/helpers');
   $config_location = [drupal_get_path('module', 'tide_grant') . '/config/install'];
   _tide_import_single_config('webform.webform.tide_grant_submission', $config_location);
+}
+
+/**
+ * Add Grant Author user.
+ */
+function tide_grant_update_8004() {
+  // First import Grant Author role configuration.
+  module_load_include('inc', 'tide_core', 'includes/helpers');
+  $config_location = [drupal_get_path('module', 'tide_grant') . '/config/install'];
+  _tide_import_single_config('user.role.grant_author', $config_location);
+
+  // Create new Grant Author user.
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $user = User::create();
+
+  $random = new Random();
+  $pass = $random->string();
+  $mail = $random->string();
+
+  // Mandatory settings.
+  $user->setPassword($pass);
+  $user->enforceIsNew();
+  $user->setEmail($mail . '@noreply.vic');
+  $user->setUsername('Grant Author');
+  $user->addRole('grant_author');
+
+  // Optional settings.
+  $user->set("init", 'email');
+  $user->set("langcode", $language);
+  $user->set("preferred_langcode", $language);
+  $user->set("preferred_admin_langcode", $language);
+  $user->activate();
+
+  // Save user.
+  $user->save();
 }

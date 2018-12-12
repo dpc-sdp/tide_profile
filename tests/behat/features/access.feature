@@ -18,3 +18,4 @@ Feature: Access to Grant content type
       | editor             | 200      |
       | approver           | 200      |
       | previewer          | 404      |
+      | grant_author       | 200      |

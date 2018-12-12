@@ -132,5 +132,14 @@ function _tide_grant_submit(array &$form, FormStateInterface $form_state) {
   foreach ($form_state->getValue('who_is_the_grant_or_program_for_') as $topic) {
     $node->field_audience->appendItem($topic);
   }
+
+  // Set the node to Needs Review state.
+  $node->set('moderation_state', "needs_review");
+
+  // Set Grant Author user as node author.
+  if ($user = user_load_by_name('Grant Author')) {
+    $node->setOwnerId($user->id());
+  }
+
   $node->save();
 }
