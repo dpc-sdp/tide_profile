@@ -80,8 +80,6 @@ third_party_settings:
       children:
         - group_grant_details
         - field_node_link
-        - field_node_fundinglevel
-        - field_audience
       parent_name: group_section_1
       weight: 21
       format_type: tab
@@ -217,21 +215,6 @@ third_party_settings:
         required_fields: true
       label: Contact
       region: content
-    group_dates:
-      children:
-        - field_node_on_going
-        - field_node_dates
-      parent_name: group_grant_details
-      weight: 26
-      format_type: tab
-      format_settings:
-        id: ''
-        classes: ''
-        formatter: closed
-        description: ''
-        required_fields: true
-      label: Dates
-      region: content
     group_grant_author:
       children:
         - field_node_author
@@ -256,12 +239,12 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 3
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
   field_audience:
-    weight: 19
+    weight: 16
     settings:
       match_operator: CONTAINS
       size: 60
@@ -392,7 +375,7 @@ content:
     region: content
   field_node_guidelines:
     type: paragraphs
-    weight: 15
+    weight: 4
     settings:
       title: Guideline
       title_plural: Guidelines
@@ -514,7 +497,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 4
+    weight: 5
     region: content
     third_party_settings: {  }
   scheduled_archiving:
@@ -592,4 +575,4 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden: { }
