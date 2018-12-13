@@ -16,7 +16,7 @@ dependencies:
     - field.field.node.grant.field_node_department
     - field.field.node.grant.field_node_documents
     - field.field.node.grant.field_node_email
-    - field.field.node.grant.field_node_fundinglevel
+    - field.field.node.grant.field_node_funding_level
     - field.field.node.grant.field_node_guidelines
     - field.field.node.grant.field_node_link
     - field.field.node.grant.field_node_on_going
@@ -42,6 +42,7 @@ dependencies:
     - maxlength
     - paragraphs
     - path
+    - range
     - telephone
 third_party_settings:
   field_group:
@@ -110,7 +111,7 @@ third_party_settings:
     group_grant_overview:
       children:
         - field_overview_title
-        - field_node_fundinglevel
+        - field_node_funding_level
         - field_audience
         - field_node_on_going
         - field_node_dates
@@ -147,7 +148,7 @@ third_party_settings:
       children:
         - field_node_guidelines
       parent_name: group_grant_details
-      weight: 25
+      weight: 26
       format_type: tab
       format_settings:
         label: Guidelines
@@ -366,12 +367,11 @@ content:
     third_party_settings: {  }
     type: email_default
     region: content
-  field_node_fundinglevel:
+  field_node_funding_level:
     weight: 15
-    settings:
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: number
+    type: range
     region: content
   field_node_guidelines:
     type: paragraphs
@@ -563,7 +563,7 @@ content:
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
   uid:
     type: entity_reference_autocomplete
-    weight: 2
+    weight: 3
     settings:
       match_operator: CONTAINS
       size: 60

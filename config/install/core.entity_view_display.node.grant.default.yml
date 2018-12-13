@@ -15,7 +15,7 @@ dependencies:
     - field.field.node.grant.field_node_department
     - field.field.node.grant.field_node_documents
     - field.field.node.grant.field_node_email
-    - field.field.node.grant.field_node_fundinglevel
+    - field.field.node.grant.field_node_funding_level
     - field.field.node.grant.field_node_guidelines
     - field.field.node.grant.field_node_link
     - field.field.node.grant.field_node_on_going
@@ -34,6 +34,7 @@ dependencies:
     - datetime_range
     - entity_reference_revisions
     - link
+    - range
     - user
 id: node.grant.default
 targetEntityType: node
@@ -132,14 +133,19 @@ content:
       link: false
     third_party_settings: {  }
     region: content
-  field_node_fundinglevel:
-    weight: 8
+  field_node_funding_level:
+    weight: 126
     label: above
     settings:
+      decimal_separator: .
+      scale: 2
+      range_separator: '-'
       thousand_separator: ''
-      prefix_suffix: true
+      range_combine: true
+      from_prefix_suffix: false
+      to_prefix_suffix: false
     third_party_settings: {  }
-    type: number_integer
+    type: range_decimal
     region: content
   field_node_guidelines:
     type: entity_reference_revisions_entity_view
@@ -183,14 +189,6 @@ content:
     region: content
   field_overview_title:
     weight: 124
-  field_node_timeline:
-    type: entity_reference_revisions_entity_view
-    weight: 12
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
     region: content
   field_show_social_sharing:
     weight: 16

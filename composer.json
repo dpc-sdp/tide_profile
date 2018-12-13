@@ -5,6 +5,7 @@
     "license": "GPL-2.0+",
     "version": "0.0.1",
     "require": {
+        "drupal/range": "^1.1",
         "dpc-sdp/tide_core": "@dev",
         "dpc-sdp/tide_media": "@dev"
     },
