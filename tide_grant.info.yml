@@ -44,6 +44,7 @@ config_devel:
     - field.field.node.grant.field_node_site
     - field.field.node.grant.field_node_timeline
     - field.field.node.grant.field_overview_title
+    - field.field.node.grant.field_show_content_rating
     - field.field.node.grant.field_show_social_sharing
     - field.field.node.grant.field_tags
     - field.field.node.grant.field_topic
