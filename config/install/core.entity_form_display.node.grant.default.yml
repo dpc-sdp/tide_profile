@@ -9,8 +9,10 @@ dependencies:
     - field.field.node.grant.field_featured_image
     - field.field.node.grant.field_landing_page_contact
     - field.field.node.grant.field_landing_page_intro_text
+    - field.field.node.grant.field_landing_page_nav_title
     - field.field.node.grant.field_landing_page_show_contact
     - field.field.node.grant.field_landing_page_summary
+    - field.field.node.grant.field_news_intro_text
     - field.field.node.grant.field_node_author
     - field.field.node.grant.field_node_dates
     - field.field.node.grant.field_node_department
@@ -25,6 +27,7 @@ dependencies:
     - field.field.node.grant.field_node_site
     - field.field.node.grant.field_node_timeline
     - field.field.node.grant.field_overview_title
+    - field.field.node.grant.field_show_content_rating
     - field.field.node.grant.field_show_social_sharing
     - field.field.node.grant.field_tags
     - field.field.node.grant.field_topic
@@ -177,6 +180,7 @@ third_party_settings:
       children:
         - group_social_media
         - group_contact
+        - group_content_rating
       parent_name: ''
       weight: 1
       format_type: tabs
@@ -190,7 +194,7 @@ third_party_settings:
       children:
         - field_show_social_sharing
       parent_name: group_right_column
-      weight: 17
+      weight: 3
       format_type: tab
       format_settings:
         label: 'Social Sharing'
@@ -206,7 +210,7 @@ third_party_settings:
         - field_landing_page_show_contact
         - field_landing_page_contact
       parent_name: group_right_column
-      weight: 18
+      weight: 4
       format_type: tab
       format_settings:
         id: ''
@@ -232,6 +236,20 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Grant Author'
+      region: content
+    group_content_rating:
+      children:
+        - field_show_content_rating
+      parent_name: group_right_column
+      weight: 5
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Content rating'
       region: content
 id: node.grant.default
 targetEntityType: node
@@ -456,6 +474,13 @@ content:
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
     type: string_textfield
     region: content
+  field_show_content_rating:
+    weight: 20
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_show_social_sharing:
     weight: 13
     settings:
@@ -575,4 +600,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: { }
+hidden:
+  field_landing_page_nav_title: true
+  field_news_intro_text: true

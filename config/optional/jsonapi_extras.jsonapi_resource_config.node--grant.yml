@@ -205,7 +205,7 @@ resourceFields:
       id: ''
     disabled: false
   field_node_author:
-    disabled: true
+    disabled: false
     fieldName: field_node_author
     publicName: field_node_author
     enhancer:
@@ -219,7 +219,7 @@ resourceFields:
         dateTimeFormat: 'Y-m-d\TH:i:sP'
     disabled: false
   field_node_department:
-    disabled: true
+    disabled: false
     fieldName: field_node_department
     publicName: field_node_department
     enhancer:
@@ -236,9 +236,9 @@ resourceFields:
     publicName: field_node_email
     enhancer:
       id: ''
-  field_node_fundinglevel:
-    fieldName: field_node_fundinglevel
-    publicName: field_node_fundinglevel
+  field_node_funding_level:
+    fieldName: field_node_funding_level
+    publicName: field_node_funding_level
     enhancer:
       id: ''
     disabled: false

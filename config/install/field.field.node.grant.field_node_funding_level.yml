@@ -25,4 +25,4 @@ settings:
   to:
     prefix: ''
     suffix: ''
-field_type: range_float
+field_type: range_integer

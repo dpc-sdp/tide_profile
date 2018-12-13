@@ -8,8 +8,10 @@ dependencies:
     - field.field.node.grant.field_featured_image
     - field.field.node.grant.field_landing_page_contact
     - field.field.node.grant.field_landing_page_intro_text
+    - field.field.node.grant.field_landing_page_nav_title
     - field.field.node.grant.field_landing_page_show_contact
     - field.field.node.grant.field_landing_page_summary
+    - field.field.node.grant.field_news_intro_text
     - field.field.node.grant.field_node_author
     - field.field.node.grant.field_node_dates
     - field.field.node.grant.field_node_department
@@ -24,6 +26,7 @@ dependencies:
     - field.field.node.grant.field_node_site
     - field.field.node.grant.field_node_timeline
     - field.field.node.grant.field_overview_title
+    - field.field.node.grant.field_show_content_rating
     - field.field.node.grant.field_show_social_sharing
     - field.field.node.grant.field_tags
     - field.field.node.grant.field_topic
@@ -190,6 +193,21 @@ content:
   field_overview_title:
     weight: 124
     region: content
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_show_content_rating:
+    weight: 15
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
   field_show_social_sharing:
     weight: 16
     label: above
@@ -238,6 +256,8 @@ content:
     type: entity_reference_label
     region: content
 hidden:
+  field_landing_page_nav_title: true
+  field_news_intro_text: true
   field_node_author: true
   field_node_department: true
   field_node_email: true

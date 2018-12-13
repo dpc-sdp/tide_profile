@@ -103,3 +103,15 @@ function tide_grant_update_8004() {
   // Save user.
   $user->save();
 }
+
+/**
+ * Remove Funding level text field from Grant Content Type [SDPA-1466].
+ */
+function tide_grant_update_8005() {
+  /* @var $entityFieldManager Drupal\Core\Entity\EntityFieldManager */
+  $entityFieldManager = Drupal::service('entity_field.manager');
+  $fields = $entityFieldManager->getFieldDefinitions('node', 'grant');
+  if (isset($fields['field_node_fundinglevel'])) {
+    $fields['field_node_fundinglevel']->delete();
+  }
+}

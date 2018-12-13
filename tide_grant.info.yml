@@ -35,7 +35,7 @@ config_devel:
     - field.field.node.grant.field_node_dates
     - field.field.node.grant.field_node_documents
     - field.field.node.grant.field_node_email
-    - field.field.node.grant.field_node_fundinglevel
+    - field.field.node.grant.field_node_funding_level
     - field.field.node.grant.field_node_guidelines
     - field.field.node.grant.field_node_link
     - field.field.node.grant.field_node_on_going
@@ -44,6 +44,7 @@ config_devel:
     - field.field.node.grant.field_node_site
     - field.field.node.grant.field_node_timeline
     - field.field.node.grant.field_overview_title
+    - field.field.node.grant.field_show_content_rating
     - field.field.node.grant.field_show_social_sharing
     - field.field.node.grant.field_tags
     - field.field.node.grant.field_topic
@@ -53,7 +54,7 @@ config_devel:
     - field.storage.node.field_node_author
     - field.storage.node.field_node_dates
     - field.storage.node.field_node_email
-    - field.storage.node.field_node_fundinglevel
+    - field.storage.node.field_node_funding_level
     - field.storage.node.field_node_guidelines
     - field.storage.node.field_node_link
     - field.storage.node.field_node_on_going

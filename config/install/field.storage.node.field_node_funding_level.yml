@@ -7,7 +7,7 @@ dependencies:
 id: node.field_node_funding_level
 field_name: field_node_funding_level
 entity_type: node
-type: range_float
+type: range_integer
 settings: {  }
 module: range
 locked: false
