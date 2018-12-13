@@ -52,8 +52,8 @@ Feature: Fields for Grant content type
     And I see field "Department"
     And I should see an "select#edit-field-node-department" element
 
-    And I see field "Funding Level"
-    And I should see an "input#edit-field-node-fundinglevel-0-value" element
+    And I should see text "Funding Level"
+    And I should see an "input#edit-field-node-funding-level-0-from" element
 
     And I should see text matching "Contact"
     And I click "Contact"

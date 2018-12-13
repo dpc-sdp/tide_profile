@@ -108,7 +108,7 @@ function _tide_grant_submit(array &$form, FormStateInterface $form_state) {
       ['target_id' => $form_state->getValue('topic')],
     ],
     'field_audience' => [],
-    'field_node_fundinglevel' => [
+    'field_node_funding_level' => [
       'value' => $form_state->getValue('funding_amount'),
     ],
     'field_node_link' => [

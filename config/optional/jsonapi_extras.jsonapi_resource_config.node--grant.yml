@@ -204,6 +204,12 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  field_node_author:
+    disabled: false
+    fieldName: field_node_author
+    publicName: field_node_author
+    enhancer:
+      id: ''
   field_node_dates:
     fieldName: field_node_dates
     publicName: field_node_dates
@@ -213,20 +219,26 @@ resourceFields:
         dateTimeFormat: 'Y-m-d\TH:i:sP'
     disabled: false
   field_node_department:
+    disabled: false
     fieldName: field_node_department
     publicName: field_node_department
     enhancer:
       id: ''
-    disabled: false
   field_node_documents:
     fieldName: field_node_documents
     publicName: field_node_documents
     enhancer:
       id: ''
     disabled: false
-  field_node_fundinglevel:
-    fieldName: field_node_fundinglevel
-    publicName: field_node_fundinglevel
+  field_node_email:
+    disabled: true
+    fieldName: field_node_email
+    publicName: field_node_email
+    enhancer:
+      id: ''
+  field_node_funding_level:
+    fieldName: field_node_funding_level
+    publicName: field_node_funding_level
     enhancer:
       id: ''
     disabled: false
@@ -236,12 +248,24 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  field_node_link:
+    fieldName: field_node_link
+    publicName: field_node_link
+    enhancer:
+      id: ''
+    disabled: false
   field_node_on_going:
     fieldName: field_node_on_going
     publicName: field_node_on_going
     enhancer:
       id: ''
     disabled: false
+  field_node_phone:
+    disabled: true
+    fieldName: field_node_phone
+    publicName: field_node_phone
+    enhancer:
+      id: ''
   field_node_primary_site:
     fieldName: field_node_primary_site
     publicName: field_node_primary_site
