@@ -17,7 +17,8 @@ Feature: JSON API Webform
     And the JSON node "data[0].attributes.elements.describe_the_grant_or_program" should exist
     And the JSON node "data[0].attributes.elements.topic" should exist
     And the JSON node "data[0].attributes.elements.who_is_the_grant_or_program_for_" should exist
-    And the JSON node "data[0].attributes.elements.funding_amount" should exist
+    And the JSON node "data[0].attributes.elements.funding_level.funding_level_from" should exist
+    And the JSON node "data[0].attributes.elements.funding_level.funding_level_to" should exist
     And the JSON node "data[0].attributes.elements.website_url_to_apply_for_grant_or_program" should exist
     And the JSON node "data[0].attributes.elements.website_url_for_grant_or_program_information" should exist
     And the JSON node "data[0].attributes.elements.required_contact_details" should exist

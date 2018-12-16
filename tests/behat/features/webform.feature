@@ -16,7 +16,8 @@ Feature: Webform "Grant Submission" exists.
     And I see field "Close date"
     And I see field "Topic"
     And I see field "Who is the grant or program for?"
-    And I see field "Funding amount"
+    And I see field "edit-funding-level-from"
+    And I see field "edit-funding-level-to"
     And I see field "Website URL to apply for grant or program"
     And I see field "Website URL for grant or program information"
     And I see field "Contact person"
@@ -51,7 +52,8 @@ Feature: Webform "Grant Submission" exists.
       | Describe the grant or program  | This is the test Grant submission   |
       | Open date |  2026-08-06 |
       | Close date | 2036-08-06 |
-      | Funding amount | 100000 |
+      | edit-funding-level-from | 100000 |
+      | edit-funding-level-to | 200000 |
       | Website URL to apply for grant or program | http://www.vic.gov.au |
       | Website URL for grant or program information | http://www.vic.gov.au |
       | Contact person | John Doe |

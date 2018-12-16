@@ -109,7 +109,10 @@ function _tide_grant_submit(array &$form, FormStateInterface $form_state) {
     ],
     'field_audience' => [],
     'field_node_funding_level' => [
-      'value' => $form_state->getValue('funding_amount'),
+      [
+        'from' => $form_state->getValue('funding_level_from'),
+        'to' => $form_state->getValue('funding_level_to'),
+      ],
     ],
     'field_node_link' => [
       'uri' => $form_state->getValue('website_url_to_apply_for_grant_or_program'),
