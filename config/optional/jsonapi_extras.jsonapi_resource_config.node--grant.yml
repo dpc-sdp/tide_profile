@@ -205,7 +205,7 @@ resourceFields:
       id: ''
     disabled: false
   field_node_author:
-    disabled: false
+    disabled: true
     fieldName: field_node_author
     publicName: field_node_author
     enhancer:
@@ -219,7 +219,7 @@ resourceFields:
         dateTimeFormat: 'Y-m-d\TH:i:sP'
     disabled: false
   field_node_department:
-    disabled: false
+    disabled: true
     fieldName: field_node_department
     publicName: field_node_department
     enhancer:
