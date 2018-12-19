@@ -151,7 +151,7 @@ third_party_settings:
       children:
         - field_node_guidelines
       parent_name: group_grant_details
-      weight: 25
+      weight: 26
       format_type: tab
       format_settings:
         label: Guidelines
