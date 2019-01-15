@@ -115,3 +115,12 @@ function tide_grant_update_8005() {
     $fields['field_node_fundinglevel']->delete();
   }
 }
+
+/**
+ * Uodate grant webform.
+ */
+function tide_grant_update_8006() {
+  module_load_include('inc', 'tide_core', 'includes/helpers');
+  $config_location = [drupal_get_path('module', 'tide_grant') . '/config/install'];
+  _tide_import_single_config('webform.webform.tide_grant_submission', $config_location);
+}
