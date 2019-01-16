@@ -178,8 +178,8 @@ third_party_settings:
       region: content
     group_right_column:
       children:
-        - group_social_media
         - group_contact
+        - group_social_media
         - group_content_rating
       parent_name: ''
       weight: 1
@@ -194,7 +194,7 @@ third_party_settings:
       children:
         - field_show_social_sharing
       parent_name: group_right_column
-      weight: 3
+      weight: 5
       format_type: tab
       format_settings:
         label: 'Social Sharing'
@@ -238,10 +238,9 @@ third_party_settings:
       label: 'Grant Author'
       region: content
     group_content_rating:
-      children:
-        - field_show_content_rating
+      children: {  }
       parent_name: group_right_column
-      weight: 5
+      weight: 6
       format_type: tab
       format_settings:
         id: ''
@@ -305,12 +304,12 @@ content:
   field_landing_page_contact:
     weight: 13
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: open
-      add_mode: dropdown
+      title: 'Contact Us block'
+      title_plural: 'Contact Us blocks'
+      edit_mode: closed
+      add_mode: button
       form_display_mode: default
-      default_paragraph_type: ''
+      default_paragraph_type: _none
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content
@@ -475,7 +474,7 @@ content:
     type: string_textfield
     region: content
   field_show_content_rating:
-    weight: 20
+    weight: 2
     settings:
       display_label: true
     third_party_settings: {  }

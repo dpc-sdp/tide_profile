@@ -9,7 +9,7 @@ field_name: field_show_content_rating
 entity_type: node
 bundle: grant
 label: 'Show Content Rating?'
-description: ''
+description: 'Check this box if you want to show content ratings on this page.'
 required: false
 translatable: true
 default_value:

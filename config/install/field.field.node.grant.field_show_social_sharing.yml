@@ -9,7 +9,7 @@ field_name: field_show_social_sharing
 entity_type: node
 bundle: grant
 label: 'Show Social Sharing?'
-description: ''
+description: 'Check this box if you want to show Social Sharing block on this page.'
 required: false
 translatable: true
 default_value:
