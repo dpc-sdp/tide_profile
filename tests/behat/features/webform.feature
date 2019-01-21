@@ -62,6 +62,7 @@ Feature: Webform "Grant Submission" exists.
     And I select "Individual" from "Topic"
     And I select "Individual" from "Who is the grant or program for?"
     And I select "Department of Premier and Cabinet" from "Department, agency or provider organisation"
+    And I check "I understand and agree to the privacy and disclaimer"
     And I press "Submit"
     Then I should see the text "We'll take a look at your grant before it's published live in the vic.gov.au grants database. We will let you know once your grant has been published. Alternatively, we'll be in touch for more information."
 
