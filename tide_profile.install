@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * @file
+ * Tide Profile module install file..
+ */
+
+use Drupal\workflows\Entity\Workflow;
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_install().
+ */
+function tide_profile_install() {
+  // Creates terms for Profile Category vocabulary.
+  $vid = 'profile_category';
+
+  $terms = [
+    'Change Agent',
+    'Local Champion',
+    'Trailblazers',
+  ];
+  foreach ($terms as $term) {
+    Term::create([
+      'name' => $term,
+      'vid' => $vid,
+      'parent' => [],
+    ])->save();
+  }
+
+  // Don't do anything else during config sync.
+  if (\Drupal::isConfigSyncing()) {
+    return;
+  }
+
+  _tide_event_add_fields_search_api();
+
+  // Enable Editorial workflow if workflow module is enabled.
+  $moduleHandler = \Drupal::service('module_handler');
+  if ($moduleHandler->moduleExists('workflows')) {
+    $editorial_workflow = Workflow::load('editorial');
+    if ($editorial_workflow) {
+      $editorial_workflow->getTypePlugin()->addEntityTypeAndBundle('node', 'profile');
+      $editorial_workflow->save();
+    }
+  }
+}
