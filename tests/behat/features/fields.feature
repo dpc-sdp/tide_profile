@@ -59,3 +59,14 @@ Feature: Fields for Profile content type
 
     And I see field "Detail"
     And I should see a "textarea#edit-body-0-value" element
+
+    And I see field "Tags"
+    And I should see an "input#edit-field-tags-0-target-id" element
+    And I should not see an "input#edit-field-tags-0-target-id.required" element
+
+    And I see field "Topic"
+    And I should see an "input#edit-field-topic-0-target-id" element
+    And I should see an "input#edit-field-topic-0-target-id.required" element
+
+    And I should see text matching "Related links"
+    And I should see the button "Add Related links" in the "content" region

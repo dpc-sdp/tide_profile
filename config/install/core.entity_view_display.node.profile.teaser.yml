@@ -1,3 +1,4 @@
+uuid: efe92073-cd89-46d1-96df-001027c89dfa
 langcode: en
 status: true
 dependencies:
@@ -30,6 +31,7 @@ hidden:
   field_expertise: true
   field_featured_image: true
   field_landing_page_c_secondary: true
+  field_landing_page_contact: true
   field_landing_page_show_contact: true
   field_landing_page_summary: true
   field_life_span: true

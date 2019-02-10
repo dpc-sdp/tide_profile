@@ -1,3 +1,4 @@
+uuid: b594015a-5299-4f5a-ae0f-9c1f481eba60
 langcode: en
 status: true
 dependencies:
@@ -15,8 +16,11 @@ dependencies:
     - field.field.node.profile.field_node_site
     - field.field.node.profile.field_profile_category
     - field.field.node.profile.field_profile_intro_text
+    - field.field.node.profile.field_related_links
     - field.field.node.profile.field_show_content_rating
     - field.field.node.profile.field_show_social_sharing
+    - field.field.node.profile.field_tags
+    - field.field.node.profile.field_topic
     - field.field.node.profile.field_year
     - field.field.node.profile.scheduled_archiving
     - field.field.node.profile.scheduled_publishing
@@ -37,6 +41,9 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
+    region: content
+  content_moderation_control:
+    weight: -20
     region: content
   field_expertise:
     weight: 107
@@ -119,6 +126,15 @@ content:
     third_party_settings: {  }
     type: basic_string
     region: content
+  field_related_links:
+    weight: 119
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
   field_show_content_rating:
     weight: 113
     label: above
@@ -138,6 +154,22 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
+  field_tags:
+    weight: 117
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_topic:
+    weight: 118
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
     region: content
   field_year:
     weight: 108

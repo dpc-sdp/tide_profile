@@ -23,6 +23,9 @@ config_devel:
     - field.field.node.profile.field_landing_page_summary
     - field.field.node.profile.field_life_span
     - field.field.node.profile.field_location
+    - field.field.node.profile.field_related_links
+    - field.field.node.profile.field_tags
+    - field.field.node.profile.field_topic
     - field.field.node.profile.scheduled_archiving
     - field.field.node.profile.scheduled_publishing
     - field.field.node.profile.field_profile_category
