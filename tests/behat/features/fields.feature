@@ -20,6 +20,14 @@ Feature: Fields for Profile content type
     And I should see a "textarea#edit-field-landing-page-summary-0-value" element
     And I should see a "textarea#edit-field-landing-page-summary-0-value.required" element
 
+    And I see field "Show Related Content?"
+    And I should see an "input#edit-field-show-related-content-value" element
+    And I should not see an "input#edit-field-show-related-content-value.required" element
+    
+    And I should see text matching "Related links"
+    And I should see text matching "No Paragraph added yet."
+    And I should see the button "Add Related links" in the "content" region
+
     And I see field "Show Social Sharing?"
     And I should see an "input#edit-field-show-social-sharing-value" element
     And I should not see an "input#edit-field-show-social-sharing-value.required" element
@@ -67,6 +75,3 @@ Feature: Fields for Profile content type
     And I see field "Topic"
     And I should see an "input#edit-field-topic-0-target-id" element
     And I should see an "input#edit-field-topic-0-target-id.required" element
-
-    And I should see text matching "Related links"
-    And I should see the button "Add Related links" in the "content" region
