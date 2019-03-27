@@ -33,8 +33,6 @@ config_devel:
     - field.field.node.profile.field_show_content_rating
     - field.field.node.profile.field_show_social_sharing
     - field.field.node.profile.field_year
-    - field.field.node.profile.field_node_primary_site
-    - field.field.node.profile.field_node_site
     - field.storage.node.field_expertise
     - field.storage.node.field_life_span
     - field.storage.node.field_profile_category

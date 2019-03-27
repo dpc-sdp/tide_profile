@@ -11,8 +11,6 @@ dependencies:
     - field.field.node.profile.field_landing_page_summary
     - field.field.node.profile.field_life_span
     - field.field.node.profile.field_location
-    - field.field.node.profile.field_node_primary_site
-    - field.field.node.profile.field_node_site
     - field.field.node.profile.field_profile_category
     - field.field.node.profile.field_profile_intro_text
     - field.field.node.profile.field_related_links
