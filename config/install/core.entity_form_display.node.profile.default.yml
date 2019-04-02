@@ -54,7 +54,7 @@ third_party_settings:
       format_settings:
         id: ''
         classes: ''
-        formatter: closed
+        formatter: open
         description: ''
         required_fields: true
       label: 'Profile detail'
