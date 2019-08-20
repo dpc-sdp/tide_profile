@@ -43,5 +43,3 @@ hidden:
   field_tags: true
   field_topic: true
   field_year: true
-  scheduled_archiving: true
-  scheduled_publishing: true

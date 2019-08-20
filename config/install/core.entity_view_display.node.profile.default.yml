@@ -20,8 +20,6 @@ dependencies:
     - field.field.node.profile.field_tags
     - field.field.node.profile.field_topic
     - field.field.node.profile.field_year
-    - field.field.node.profile.scheduled_archiving
-    - field.field.node.profile.scheduled_publishing
     - node.type.profile
   module:
     - entity_reference_revisions
@@ -188,22 +186,6 @@ content:
     region: content
   links:
     weight: 100
-    region: content
-  scheduled_archiving:
-    weight: 114
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  scheduled_publishing:
-    weight: 115
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
     region: content
 hidden:
   field_node_primary_site: true

@@ -23,8 +23,6 @@ dependencies:
     - field.field.node.profile.field_tags
     - field.field.node.profile.field_topic
     - field.field.node.profile.field_year
-    - field.field.node.profile.scheduled_archiving
-    - field.field.node.profile.scheduled_publishing
     - node.type.profile
   module:
     - content_moderation
@@ -355,42 +353,6 @@ content:
     weight: 9
     region: content
     third_party_settings: {  }
-  scheduled_archiving:
-    weight: 19
-    settings:
-      form_mode: default
-      override_labels: true
-      label_singular: 'Scheduled Publishing'
-      label_plural: 'Scheduled Publishings'
-      allow_new: true
-      match_operator: CONTAINS
-      collapsible: false
-      collapsed: false
-      allow_existing: false
-      allow_duplicate: false
-    third_party_settings:
-      entity_browser_entity_form:
-        entity_browser_id: _none
-    type: inline_entity_form_complex
-    region: content
-  scheduled_publishing:
-    weight: 20
-    settings:
-      form_mode: default
-      override_labels: true
-      label_singular: 'Scheduled Archiving'
-      label_plural: 'Scheduled Archivings'
-      allow_new: true
-      match_operator: CONTAINS
-      collapsible: false
-      collapsed: false
-      allow_existing: false
-      allow_duplicate: false
-    third_party_settings:
-      entity_browser_entity_form:
-        entity_browser_id: _none
-    type: inline_entity_form_complex
-    region: content
   status:
     type: boolean_checkbox
     settings:

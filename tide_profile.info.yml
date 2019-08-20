@@ -26,8 +26,6 @@ config_devel:
     - field.field.node.profile.field_related_links
     - field.field.node.profile.field_tags
     - field.field.node.profile.field_topic
-    - field.field.node.profile.scheduled_archiving
-    - field.field.node.profile.scheduled_publishing
     - field.field.node.profile.field_profile_category
     - field.field.node.profile.field_profile_intro_text
     - field.field.node.profile.field_show_content_rating

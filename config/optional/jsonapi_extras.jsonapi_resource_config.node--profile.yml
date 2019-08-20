@@ -234,15 +234,3 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
-  scheduled_archiving:
-    fieldName: scheduled_archiving
-    publicName: scheduled_archiving
-    enhancer:
-      id: ''
-    disabled: false
-  scheduled_publishing:
-    fieldName: scheduled_publishing
-    publicName: scheduled_publishing
-    enhancer:
-      id: ''
-    disabled: false
