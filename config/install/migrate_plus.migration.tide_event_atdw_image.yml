@@ -1,0 +1,78 @@
+id: tide_event_atdw_image
+label: ATDW Event Images
+dependencies:
+  enforced:
+    modules:
+      - tide_event_atdw
+migration_group: atdw_event
+migration_tags:
+  - atdw
+  - atdw_event
+source:
+  plugin: atdw_event
+  track_changes: false
+  data_fetcher_plugin: http_cache
+  data_parser_plugin: tide_simple_xml
+  item_selector: /atdw_data_results/product_distribution
+  constants:
+    uid: 1
+    status: 1
+    site: ''
+  fields:
+    -
+      name: product_id
+      label: Product ID
+      selector: '@product_id'
+    -
+      name: product_number
+      label: Product number
+      selector: '@product_number'
+    -
+      name: product_name
+      label: Product name
+      selector: product_record/product_name
+    -
+      name: image_alt
+      label: Image Alt text
+      selector: product_multimedia/row[1]/alt_text
+  ids:
+    product_id:
+      type: string
+destination:
+  plugin: entity:media
+  default_bundle: image
+process:
+  name: product_name
+  uid: 'constants/uid'
+  thumbnail__alt: image_alt
+  field_media_caption: product_name
+  'field_media_image/target_id':
+    plugin: migration_lookup
+    migration: tide_event_atdw_image_file
+    source: product_id
+    no_stub: true
+  'field_media_image/title': product_name
+  'field_media_image/alt': image_alt
+  status: 'constants/status'
+  field_media_site:
+    plugin: entity_lookup
+    source: constants/site
+    value_key: name
+    bundle_key: vid
+    bundle: sites
+    entity_type: taxonomy_term
+    ignore_case: true
+  field_media_topic:
+    -
+      plugin: default_value
+      default_value: 'Event'
+    -
+      plugin: entity_generate
+      value_key: name
+      bundle_key: vid
+      bundle: topic
+      entity_type: taxonomy_term
+      ignore_case: true
+migration_dependencies:
+  required:
+    - tide_event_atdw_image_file

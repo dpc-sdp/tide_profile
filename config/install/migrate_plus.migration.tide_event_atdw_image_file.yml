@@ -1,0 +1,77 @@
+id: tide_event_atdw_image_file
+label: ATDW Event Image Files
+dependencies:
+  enforced:
+    modules:
+      - tide_event_atdw
+migration_group: atdw_event
+migration_tags:
+  - atdw
+  - atdw_event
+source:
+  plugin: atdw_event
+  track_changes: false
+  data_fetcher_plugin: http_cache
+  data_parser_plugin: tide_simple_xml
+  item_selector: /atdw_data_results/product_distribution
+  constants:
+    uid: 1
+    file_destination: 'public://atdw_event_images/'
+  fields:
+    -
+      name: product_id
+      label: Product ID
+      selector: '@product_id'
+    -
+      name: product_number
+      label: Product number
+      selector: '@product_number'
+    -
+      name: image_url
+      label: Image URL
+      selector: product_multimedia/row[1]/server_path
+  ids:
+    product_id:
+      type: string
+destination:
+  plugin: entity:file
+process:
+  _downloaded_file:
+    -
+      plugin: callback
+      callable: html_entity_decode
+      source: image_url
+    -
+      plugin: file_import_rename
+      destination: 'constants/file_destination'
+      file_exists: replace
+      skip_on_missing_source: true
+      uid: 'constants/uid'
+      file_rename:
+        filename: product_id
+      retry: 3
+      retry_wait: 5
+    -
+      plugin: entity_values
+      type: file
+  fid:
+    plugin: extract
+    source: '@_downloaded_file'
+    index:
+      - fid
+  uuid:
+    plugin: extract
+    source: '@_downloaded_file'
+    index:
+      - uuid
+  filename:
+    plugin: extract
+    source: '@_downloaded_file'
+    index:
+      - filename
+  uri:
+    plugin: extract
+    source: '@_downloaded_file'
+    index:
+      - uri
+  uid: constants/uid

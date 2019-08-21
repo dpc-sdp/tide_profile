@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * @file
+ * Install file.
+ */
+
+use Drupal\Core\Link;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_schema().
+ */
+function tide_event_atdw_schema() {
+  $schema['migrate_tracking_tide_event_atdw'] = [
+    'description' => 'Table that contains Product IDs of imported ATDW events.',
+    'fields' => [
+      'product_id' => [
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Product ID',
+      ],
+    ],
+    'primary key' => ['product_id'],
+  ];
+  return $schema;
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function tide_event_atdw_requirements($phase) {
+  $requirements = [];
+  if ($phase == 'runtime') {
+    $api_key = \Drupal::config('tide_event_atdw.settings')->get('api_key');
+    if (empty($api_key)) {
+      $requirements['tide_event_atdw'] = [
+        'title' => t('ATDW Integration'),
+        'value' => t('Missing API Key'),
+        'description' => t('Without an API Key, the ATDW Integration cannot import events from the Australian Tourism Data Warehouse. Please go @link to set.', [
+          '@link' => Link::fromTextAndUrl('here', Url::fromRoute('entity.node_type.edit_form', ['node_type' => 'event'], ['fragment' => 'edit-tide-event-atdw']))->toString(),
+        ]),
+        'severity' => REQUIREMENT_ERROR,
+      ];
+    }
+  }
+
+  return $requirements;
+}

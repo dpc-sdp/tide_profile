@@ -1,0 +1,16 @@
+name: Tide Event ATDW
+type: module
+description: 'Provides event importer from Australian Tourism Data Warehouse for Tide Drupal 8 distribution.'
+package: Tide
+core: 8.x
+dependencies:
+  - dpc-sdp:tide_event
+  - drupal:migrate
+  - migrate_plus:migrate_plus
+  - migrate_cron:migrate_cron
+  - migrate_file:migrate_file
+config_devel:
+  install:
+    - field.storage.node.field_tracking_beacon
+    - field.field.node.event.field_tracking_beacon
+    - migrate_plus.migration_group.atdw

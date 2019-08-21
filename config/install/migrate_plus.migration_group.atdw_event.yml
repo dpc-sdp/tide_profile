@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    modules:
+      - tide_event_atdw
+id: atdw_event
+label: ATDW Events
+description: Australian Tourism Data Warehouse Event Migrations
+source_type: ATDW
+module: null
+shared_configuration: null

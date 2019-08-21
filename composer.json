@@ -1,0 +1,37 @@
+{
+    "name": "dpc-sdp/tide_event_atdw",
+    "description": "Provides event importer from Australian Tourism Data Warehouse for Tide Drupal 8 distribution",
+    "type": "drupal-module",
+    "license": "GPL-2.0+",
+    "version": "0.0.1",
+    "require": {
+        "dpc-sdp/tide_event": "@dev",
+        "drupal/migrate_cron": "^1.2",
+        "drupal/migrate_plus": "4.2",
+        "drupal/migrate_tools": "^4.3",
+        "drupal/migrate_file": "^1.1"
+    },
+    "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    },
+    "minimum-stability": "alpha",
+    "prefer-stable": true,
+    "extra": {
+        "enable-patching": true,
+        "patches": {
+            "drupal/migrate_plus": {
+                "EntityGenerate does not process the values correctly - https://www.drupal.org/project/migrate_plus/issues/2975266": "https://www.drupal.org/files/issues/2019-02-21/migrate_plus-provide_multiple_values-2975266-20.patch",
+                "Simple XML broken with UTF-16LE - https://www.drupal.org/project/migrate_plus/issues/3051858": "https://www.drupal.org/files/issues/2019-05-01/3051858-migrate_plus-simplexml_remove_trim-2.patch"
+            },
+            "drupal/migrate_cron": {
+                "Provide the ability to execute dependent migrations - https://www.drupal.org/project/migrate_cron/issues/3051619#comment-13087893": "https://www.drupal.org/files/issues/2019-04-30/3051619-migrate_cron-execute_dependencies-2.patch"
+            },
+            "drupal/migrate_tools": {
+                "status is not a log level - https://www.drupal.org/node/3073748": "https://www.drupal.org/files/issues/2019-08-09/3073748-migrate_tools-status_loglevel-2.patch"
+            }
+        }
+    }
+}

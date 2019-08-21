@@ -1,0 +1,226 @@
+id: tide_event_atdw
+label: ATDW Events
+dependencies:
+  enforced:
+    modules:
+      - tide_event_atdw
+migration_group: atdw_event
+migration_tags:
+  - atdw
+  - atdw_event
+source:
+  plugin: atdw_event
+  track_changes: true
+  data_fetcher_plugin: http_cache
+  data_parser_plugin: tide_simple_xml
+  item_selector: /atdw_data_results/product_distribution
+  constants:
+    site: ''
+    text_format: 'rich_text'
+    uid: 1
+    p_prefix: '<p>'
+    p_suffix: '</p>'
+  fields:
+    -
+      name: product_id
+      label: Product ID
+      selector: '@product_id'
+    -
+      name: product_number
+      label: Product number
+      selector: '@product_number'
+    -
+      name: product_name
+      label: Product name
+      selector: product_record/product_name
+    -
+      name: product_description
+      label: Product description
+      selector: product_record/product_description
+    -
+      name: product_short_description
+      label: Product short description
+      selector: product_record/product_short_description
+    -
+      name: product_category_id
+      label: Product category
+      selector: product_record/product_category_id
+    -
+      name: product_pixel_url
+      label: Product Pixel URL
+      selector: product_record/product_pixel_url
+    -
+      name: product_classifications
+      label: Product classification
+      selector: product_vertical_classification/row/product_type_id
+    -
+      name: event_dates
+      label: Event dates
+      selector: event_frequency
+    -
+      name: enquiries_url
+      label: URL Enquiries
+      selector: product_communication/row[attribute_id_communication_description = 'URL Enquiries']/communication_detail
+  ids:
+    product_id:
+      type: string
+destination:
+  plugin: entity:node
+  default_bundle: event
+process:
+  uid: constants/uid
+  title: product_name
+  status:
+    plugin: default_value
+    default_value: 1
+  moderation_state:
+    plugin: default_value
+    default_value: 'published'
+  field_landing_page_summary: product_short_description
+  'field_event_description/value':
+    -
+      plugin: callback
+      callable: nl2br
+      source: product_description
+    -
+      plugin: concat
+      source:
+        - 'constants/p_prefix'
+        -
+        - 'constants/p_suffix'
+  'field_event_description/format': 'constants/text_format'
+  field_tracking_beacon: product_pixel_url
+  field_featured_image:
+    plugin: migration_lookup
+    migration: tide_event_atdw_image
+    source: product_id
+    no_stub: true
+  field_node_site:
+    plugin: entity_lookup
+    source: constants/site
+    value_key: name
+    bundle_key: vid
+    bundle: sites
+    entity_type: taxonomy_term
+    ignore_case: true
+  field_node_primary_site:
+    plugin: entity_lookup
+    source: constants/site
+    value_key: name
+    bundle_key: vid
+    bundle: sites
+    entity_type: taxonomy_term
+    ignore_case: true
+  field_topic:
+    -
+      plugin: default_value
+      default_value: 'Event'
+    -
+      plugin: entity_generate
+      value_key: name
+      bundle_key: vid
+      bundle: topic
+      entity_type: taxonomy_term
+      ignore_case: true
+  field_event_category:
+    -
+      plugin: static_map
+      source: product_classifications
+      map:
+        EVTBUS: Business training and networking
+        EVTCLASS: Talks and workshops
+        EVTCOMNTY: Community events and fundraisers
+        PERFORMANC: Music
+        EXHIBIT: Arts and exhibitions
+        FESTIVAL: Festivals and major events
+        EVTFOOD: Food and drink
+        EVTMARKET: Markets
+        SPORT: Sport and outdoor
+      default_value: null
+    -
+      plugin: entity_lookup
+      value_key: name
+      bundle_key: vid
+      bundle: event
+      entity_type: taxonomy_term
+      ignore_case: true
+  'field_event_details/target_id':
+    -
+      plugin: migration_lookup
+      migration: tide_event_atdw_details
+      source: product_id
+      no_stub: true
+    -
+      plugin: skip_on_empty
+      method: process
+    -
+      plugin: extract
+      index:
+        - 0
+  'field_event_details/target_revision_id':
+    -
+      plugin: migration_lookup
+      migration: tide_event_atdw_details
+      source: product_id
+      no_stub: true
+    -
+      plugin: skip_on_empty
+      method: process
+    -
+      plugin: extract
+      index:
+        - 1
+  'body/value':
+    -
+      plugin: simplexml_to_array
+      source: event_dates
+      item_selector: row
+    -
+      plugin: sub_process
+      process:
+        start_date:
+          plugin: if_empty
+          source: frequency_start_time
+          on_true:
+            -
+              plugin: format_date
+              source: frequency_start_date
+              from_format: 'Y-m-d'
+              to_format: 'd M Y'
+              settings:
+                validate_format: false
+          on_false:
+            -
+              plugin: concat
+              source:
+                - frequency_start_date
+                - frequency_start_time
+              delimiter: ' '
+            -
+              plugin: format_date
+              from_format: 'Y-m-d H:i'
+              to_format: 'd M Y - h:i a'
+              settings:
+                validate_format: false
+    -
+      plugin: skip_on_empty
+      method: process
+    -
+      plugin: flatten
+    -
+      plugin: html_list
+      heading: 'Dates'
+      heading_tag: h2
+      type: ul
+  'body/format': constants/text_format
+  'field_node_link/uri':
+    -
+      plugin: url_validate
+      source: enquiries_url
+    -
+      plugin: skip_on_empty
+      method: process
+migration_dependencies:
+  required:
+    - tide_event_atdw_image
+    - tide_event_atdw_details

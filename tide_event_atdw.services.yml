@@ -1,0 +1,6 @@
+services:
+  tide_event_atdw.events_subscriber:
+    class: '\Drupal\tide_event_atdw\EventSubscriber\MigrateEventsSubscriber'
+    arguments: ['@config.factory', '@entity_type.manager', '@database', '@plugin.manager.migration']
+    tags:
+      - { name: 'event_subscriber' }

@@ -1,0 +1,160 @@
+id: tide_event_atdw_details
+label: ATDW Event Details
+dependencies:
+  enforced:
+    modules:
+      - tide_event_atdw
+migration_group: atdw_event
+migration_tags:
+  - atdw
+  - atdw_event
+source:
+  plugin: atdw_event
+  track_changes: true
+  data_fetcher_plugin: http_cache
+  data_parser_plugin: tide_simple_xml
+  item_selector: /atdw_data_results/product_distribution
+  fields:
+    -
+      name: product_id
+      label: Product ID
+      selector: '@product_id'
+    -
+      name: product_number
+      label: Product number
+      selector: '@product_number'
+    -
+      name: product_name
+      label: Product name
+      selector: product_record/product_name
+    -
+      name: address_line1
+      label: Product Address Line 1
+      selector: product_address/row[1]/address_line_1
+    -
+      name: address_line2
+      label: Product Address Line 2
+      selector: product_address/row[1]/address_line_2
+    -
+      name: address_city
+      label: Product Address City
+      selector: product_address/row[1]/suburb_name
+    -
+      name: address_state
+      label: Product Address State
+      selector: product_address/row[1]/state_name
+    -
+      name: address_postcode
+      label: Product Address Postcode
+      selector: product_address/row[1]/address_postal_code
+    -
+      name: start_date
+      label: Start date
+      selector: product_record/frequency_start_date
+    -
+      name: end_date
+      label: End date
+      selector: product_record/frequency_end_date
+    -
+      name: booking_url
+      label: Booking URL
+      selector: product_communication/row[attribute_id_communication_description = 'Booking URL']/communication_detail
+    -
+      name: rate_from
+      label: Rate from
+      selector: product_record/rate_from
+    -
+      name: rate_to
+      label: Rate to
+      selector: product_record/rate_to
+    -
+      name: free_entry
+      label: Free entry
+      selector: product_record/free_entry_flag
+  ids:
+    product_id:
+      type: string
+destination:
+  plugin: entity_reference_revisions:paragraph
+  default_bundle: event_details
+process:
+  status:
+    plugin: default_value
+    default_value: 1
+  field_show_time:
+    plugin: default_value
+    default_value: 0
+  'field_paragraph_date_range/value':
+    -
+      plugin: default_value
+      default_value: '00:00:00'
+    -
+      plugin: concat
+      source:
+        - start_date
+        -
+      delimiter: ' '
+    -
+      plugin: format_date
+      from_format: 'Y-m-d H:i:s'
+      from_timezone: 'Australia/Melbourne'
+      to_format: 'Y-m-d\TH:i:s'
+      to_timezone: 'UTC'
+      settings:
+        validate_format: false
+  'field_paragraph_date_range/end_value':
+    -
+      plugin: default_value
+      default_value: '11:59:59'
+    -
+      plugin: concat
+      source:
+        - end_date
+        -
+      delimiter: ' '
+    -
+      plugin: format_date
+      from_format: 'Y-m-d H:i:s'
+      from_timezone: 'Australia/Melbourne'
+      to_format: 'Y-m-d\TH:i:s'
+      to_timezone: 'UTC'
+      settings:
+        validate_format: false
+  'field_paragraph_location/address_line1': address_line1
+  'field_paragraph_location/address_line2': address_line2
+  'field_paragraph_location/locality': address_city
+  'field_paragraph_location/administrative_area':
+    plugin: static_map
+    source: address_state
+    map:
+      'Australian Capital Territory': ACT
+      'New South Wales': NSW
+      'Northern Territory': NT
+      Queensland: QLD
+      'South Australia': SA
+      Tasmania: TAS
+      Victoria: VIC
+      'Western Australia': WA
+    default_value: VIC
+  'field_paragraph_location/postal_code': address_postcode
+  'field_paragraph_location/country_code':
+    plugin: default_value
+    default_value: 'AU'
+  field_paragraph_event_price_from:
+    plugin: if_empty
+    source: free_entry
+    on_true: rate_from
+    on_false:
+      plugin: default_value
+      default_value: 'Free entry'
+  field_paragraph_event_price_to: rate_to
+  'field_paragraph_link/uri':
+    -
+      plugin: url_validate
+      source: booking_url
+    -
+      plugin: skip_on_empty
+      method: process
+  'field_paragraph_link/title':
+    plugin: default_value
+    default_value: 'Booking URL'
