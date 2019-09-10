@@ -49,8 +49,8 @@ process:
       uid: 'constants/uid'
       file_rename:
         filename: product_id
-      retry: 3
-      retry_wait: 5
+      retry: 5
+      retry_wait: 30
     -
       plugin: entity_values
       type: file
