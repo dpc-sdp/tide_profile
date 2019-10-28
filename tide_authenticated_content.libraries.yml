@@ -1,5 +1,0 @@
-preview-links:
-  version: 1.x
-  css:
-    theme:
-      css/tide_authenticated_content.preview_links.css: {}
