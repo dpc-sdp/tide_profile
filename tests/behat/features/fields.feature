@@ -1,4 +1,4 @@
-@tide @skipped
+@tide
 # @TODO remove @skipped once the module is extracted to its own repo.
 Feature: Fields for Profile content type
 
@@ -23,7 +23,7 @@ Feature: Fields for Profile content type
     And I see field "Show Related Content?"
     And I should see an "input#edit-field-show-related-content-value" element
     And I should not see an "input#edit-field-show-related-content-value.required" element
-    
+
     And I should see text matching "Related links"
     And I should see text matching "No Paragraph added yet."
     And I should see the button "Add Related links" in the "content" region

@@ -1,4 +1,4 @@
-@tide @jsonapi @suggest @skipped
+@tide @jsonapi @suggest
 Feature: JSON API Profile
 
   Ensure that the Profile nodes are exposed via JSON API.
