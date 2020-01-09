@@ -27,7 +27,7 @@ Feature: JSON API Profile
     Then the rest response status code should be 200
     And the response should be in JSON
     And the JSON node "links" should exist
-    And the JSON node "links.self" should contain "api/v1/node/profile"
+    And the JSON node "links.self.href" should contain "api/v1/node/profile"
     And the JSON node "data" should exist
     And the JSON node "data.type" should be equal to "node--profile"
     And the JSON node "data.id" should be equal to "99999999-aaaa-bbbb-ccc-000000000001"
@@ -37,7 +37,7 @@ Feature: JSON API Profile
     And the response should be in JSON
     And the JSON node "jsonapi.version" should be equal to "1.0"
     And the JSON node "links" should exist
-    And the JSON node "links.self" should contain "api/v1/node/profile"
+    And the JSON node "links.self.href" should contain "api/v1/node/profile"
     And the JSON node "meta.count" should exist
     And the JSON node "data" should exist
     And the JSON node "data[0].type" should be equal to "node--profile"
