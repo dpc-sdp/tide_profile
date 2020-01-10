@@ -5,6 +5,7 @@
     "license": "GPL-2.0-or-later",
     "require": {
         "dpc-sdp/tide_core": "dev-feature/SDPA-2794_migrate_sdp-dpc_modules as 1.5.3",
+    	"dpc-sdp/tide_landing_page": "dev-feature/SDPA-2794_migrate_sdp-dpc_modules",
         "dpc-sdp/tide_media": "dev-feature/SDPA-2794_migrate_sdp-dpc_modules"
     },
     "repositories": {

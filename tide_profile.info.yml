@@ -6,6 +6,7 @@ package: Tide
 core: 8.x
 dependencies:
   - dpc-sdp:tide_core
+  - dpc-sdp:tide_landing_page
   - dpc-sdp:tide_media
   - drupal:menu_ui
 config_devel:
