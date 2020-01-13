@@ -8,6 +8,9 @@
     	"dpc-sdp/tide_landing_page": "dev-feature/SDPA-2794_migrate_sdp-dpc_modules",
         "dpc-sdp/tide_media": "dev-feature/SDPA-2794_migrate_sdp-dpc_modules"
     },
+    "suggest": {
+        "dpc-sdp/tide_api:^1.2.6": "Allows to use Drupal in headless mode"
+    },
     "repositories": {
         "drupal": {
             "type": "composer",
