@@ -1,10 +1,9 @@
 @tide
-# @TODO remove @skipped once the module is extracted to its own repo.
 Feature: Fields for Profile content type
 
   Ensure that Alert content has the expected fields.
 
-  @api @javascript
+  @api
   Scenario: The content type has the expected fields (and labels where we can use them).
     Given I am logged in as a user with the "create profile content" permission
     When I visit "node/add/profile"
@@ -44,7 +43,7 @@ Feature: Fields for Profile content type
     And I should see an "input#edit-field-show-content-rating-value" element
     And I should not see an "input#edit-field-show-content-rating-value.required" element
 
-    And I should see text "Life span"
+    And I should see text matching "Life span"
     And I should see an "input#edit-field-life-span-0-value" element
 
     And I see field "Secondary Campaign"
