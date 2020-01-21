@@ -1,4 +1,3 @@
-# @TODO remove @skipped once the module is extracted to its own repo.
 Feature: Access to Profile content type
 
   Ensure that Profile content access permissions are set correctly

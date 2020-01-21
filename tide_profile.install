@@ -34,8 +34,6 @@ function tide_profile_install() {
     return;
   }
 
-  _tide_event_add_fields_search_api();
-
   // Enable Editorial workflow if workflow module is enabled.
   $moduleHandler = \Drupal::service('module_handler');
   if ($moduleHandler->moduleExists('workflows')) {

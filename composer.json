@@ -2,11 +2,14 @@
     "name": "dpc-sdp/tide_profile",
     "description": "Profile content type and related configuration for Tide Drupal 8 distribution",
     "type": "drupal-module",
-    "license": "GPL-2.0+",
-    "version": "0.0.1",
+    "license": "GPL-2.0-or-later",
     "require": {
-        "dpc-sdp/tide_core": "@dev",
-        "dpc-sdp/tide_media": "@dev"
+        "dpc-sdp/tide_core": "^1.5.4",
+    	"dpc-sdp/tide_landing_page": "^1.2.1",
+        "dpc-sdp/tide_media": "^1.5.1"
+    },
+    "suggest": {
+        "dpc-sdp/tide_api:^1.2.6": "Allows to use Drupal in headless mode"
     },
     "repositories": {
         "drupal": {
