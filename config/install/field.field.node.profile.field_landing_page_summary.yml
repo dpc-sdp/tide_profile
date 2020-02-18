@@ -9,7 +9,7 @@ field_name: field_landing_page_summary
 entity_type: node
 bundle: profile
 label: Summary
-description: ''
+description: 'This is the meta description that appears in Google search results. Recommended length <156 characters. Use keywords.'
 required: true
 translatable: true
 default_value: {  }
