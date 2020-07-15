@@ -43,6 +43,26 @@ function tide_profile_install() {
       $editorial_workflow->save();
     }
   }
+
+  // Enable entity type/bundles for use with scheduled transitions.
+  if (\Drupal::moduleHandler()->moduleExists('scheduled_transitions')) {
+    $config_factory = \Drupal::configFactory();
+    $config = $config_factory->getEditable('scheduled_transitions.settings');
+    $bundles = $config->get('bundles');
+    if ($bundles) {
+      foreach ($bundles as $bundle) {
+        $enabled_bundles[] = $bundle['bundle'];
+      }
+      if (!in_array('profile', $enabled_bundles)) {
+        $bundles[] = ['entity_type' => 'node', 'bundle' => 'profile'];
+        $config->set('bundles', $bundles)->save();
+      }
+    }
+    else {
+      $bundles[] = ['entity_type' => 'node', 'bundle' => 'profile'];
+      $config->set('bundles', $bundles)->save();
+    }
+  }
 }
 
 /**
@@ -152,5 +172,29 @@ function tide_profile_update_8001() {
     $index->addField($field_year);
 
     $index->save();
+  }
+}
+
+/**
+ * Enable entity type/bundles for use with scheduled transitions.
+ */
+function tide_profile_update_8002() {
+  if (\Drupal::moduleHandler()->moduleExists('scheduled_transitions')) {
+    $config_factory = \Drupal::configFactory();
+    $config = $config_factory->getEditable('scheduled_transitions.settings');
+    $bundles = $config->get('bundles');
+    if ($bundles) {
+      foreach ($bundles as $bundle) {
+        $enabled_bundles[] = $bundle['bundle'];
+      }
+      if (!in_array('profile', $enabled_bundles)) {
+        $bundles[] = ['entity_type' => 'node', 'bundle' => 'profile'];
+        $config->set('bundles', $bundles)->save();
+      }
+    }
+    else {
+      $bundles[] = ['entity_type' => 'node', 'bundle' => 'profile'];
+      $config->set('bundles', $bundles)->save();
+    }
   }
 }
