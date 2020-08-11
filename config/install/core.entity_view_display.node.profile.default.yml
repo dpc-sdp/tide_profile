@@ -116,7 +116,7 @@ content:
     type: entity_reference_label
     region: content
   field_profile_intro_text:
-    weight: 102
+    weight: -19
     label: above
     settings: {  }
     third_party_settings: {  }
