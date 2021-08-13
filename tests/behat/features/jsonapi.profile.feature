@@ -7,7 +7,7 @@ Feature: JSON API Profile
   Scenario: Request to "profile" collection endpoint
     Given I am an anonymous user
     When I send a GET request to "api/v1/node/profile"
-    Then the rest response status code should be 200
+    Then the response code should be 200
     And the response should be in JSON
     And the JSON node "jsonapi.version" should be equal to "1.0"
     And the JSON node "links" should exist
@@ -24,7 +24,7 @@ Feature: JSON API Profile
     Given I am an anonymous user
 
     When I send a GET request to "api/v1/node/profile/99999999-aaaa-bbbb-ccc-000000000001"
-    Then the rest response status code should be 200
+    Then the response code should be 200
     And the response should be in JSON
     And the JSON node "links" should exist
     And the JSON node "links.self.href" should contain "api/v1/node/profile"
@@ -33,7 +33,7 @@ Feature: JSON API Profile
     And the JSON node "data.id" should be equal to "99999999-aaaa-bbbb-ccc-000000000001"
 
     When I send a GET request to "api/v1/node/profile?sort=-created"
-    Then the rest response status code should be 200
+    Then the response code should be 200
     And the response should be in JSON
     And the JSON node "jsonapi.version" should be equal to "1.0"
     And the JSON node "links" should exist
