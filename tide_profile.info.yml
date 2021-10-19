@@ -3,7 +3,7 @@ type: module
 description: 'Provides Profile content type and related configuration. '
 type: module
 package: Tide
-core: 8.x
+core_version_requirement: ^8.9 || ^9
 dependencies:
   - dpc-sdp:tide_core
   - dpc-sdp:tide_landing_page
