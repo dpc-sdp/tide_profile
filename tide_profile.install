@@ -15,7 +15,8 @@ function tide_profile_install() {
   if (\Drupal::isConfigSyncing()) {
     return;
   }
-  TideProfileOperation::enableNecessaryModules();
+  TideProfileOperation::addToWorkflows();
+  TideProfileOperation::addToScheduledTransitions();
   TideProfileOperation::assignNecessaryPermissions();
   TideProfileOperation::addFieldsToSearchApi();
 
